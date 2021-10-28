@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>新增</title>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSave").click(function () {
+
+                console.log("点击了保存");
+
+                var name = $("#Name").val();
+                var id = $("#Id").val();
+
+                if (name.length == 0) {
+                    alert("名字不能为空");
+                    return;
+                }
+
+                $.ajax({
+                    type: "post", url: "/Home/Add",
+                    datatype: "json",
+                    data: { name: name, id: id },
+                    success: function (data) {
+                        if (data.Status == "ok") {
+                            window.location.href = "/Home/Index"
+                        } else if (data.Status == "error") {
+                            alert("新增失败" + data.Msg);
+                        }
+                    },
+                    error: function () {
+                        alert("通讯失败!");
+                    }
+
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="input-group">
+        <label for="Name">姓名:</label>
+        <input name="Name" id="Name" class="form-control" placeholder="姓名" />
+    </div>
+
+
+    <div class="btn">
+        <input type="button" id="btnSave" value="保存" class="btn btn-primary btn-large" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+# 技术点
+CRUD , ajax, MVC5，Entity Framework
+
+# 访问接口
+更改使用本地ip地址访问, 修改如下两个地方:
+ ## 步骤一 :
+WebCRUDDemo\.vs\WebCRUDDemo\applicationhost.config
+
+
+<binding protocol="http" bindingInformation="*:13784:192.168.1.4" />
+ip地址可以是 localhost  或者 127.0.0.1 或者是本机ip地址 192.168.1.4 ;
+
+ ## 步骤二 :
+解决方案右键， 属性， web选项卡 设置 ip 地址 localhost 跟 步骤一 config 中配置的ip地址保持一致；
+
+
+
+
+
+
+ # 数据库表：
+
+CREATE TABLE `mytest`.`student`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+
+需要安装两个 服务插件
+ mysql-connector-net-8.0.27.msi
+ mysql-for-visualstudio-1.2.10.msi
+
+# 参考链接
+https://blog.csdn.net/dyx2525775/article/details/51983680?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.highlightwordscore&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.highlightwordscore
+
+
+
+
+

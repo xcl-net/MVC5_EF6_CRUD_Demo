@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using WebCRUDDemo.Models
+
+<div class="row">
+    <div class="col-md-4 list-group">
+        <h2>学生信息表管理</h2>
+
+        @foreach (var item in ViewBag.Data as List<student>)
+        {
+            <div class="list-group-item">
+                <span>@item.id</span>
+                <span>@item.name</span>
+                <span><a href="/Home/GetEdit?id=@item.id" class="btn btn-warning btn-large">编辑</a></span>
+                <span><a href="/Home/Del?id=@item.id" class="btn btn-danger btn-large">删除</a></span>
+            </div>
+            
+        }
+
+        <div class="btn">
+            <a href="/Home/GetAdd" class="btn btn-primary btn-large">新增</a>
+        </div>
+    </div>
+</div>
